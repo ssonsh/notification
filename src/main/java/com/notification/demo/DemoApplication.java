@@ -4,7 +4,8 @@ import com.notification.demo.domain.EmailNotification;
 import com.notification.demo.domain.Notification;
 import com.notification.demo.domain.PushNotification;
 import com.notification.demo.domain.SmsNotification;
-import com.notification.demo.service.NotificationService;
+import com.notification.demo.service.NotificationReaderService;
+import com.notification.demo.service.NotificationSenderService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,7 @@ public class DemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        System.out.println("======= Send End =======");
         List<Notification> notifications = Arrays.asList(
                 new EmailNotification("ssh1224@midasin.com", "sson"),
                 new PushNotification("ssh1224", "sson"),
@@ -32,11 +34,14 @@ public class DemoApplication implements CommandLineRunner {
 
         );
 
-        NotificationService notificationService = new NotificationService();
+        NotificationSenderService notificationSenderService = new NotificationSenderService();
+        notifications.forEach(notificationSenderService::send);
 
+        System.out.println("======= Send End =======");
 
-        notifications.forEach(notificationService::send);
-
-        System.out.println("hi");
+        System.out.println("======= Read Start =======");
+        NotificationReaderService notificationReaderService = new NotificationReaderService();
+        notifications.forEach(notificationReaderService::read);
+        System.out.println("======= Read End =======");
     }
 }

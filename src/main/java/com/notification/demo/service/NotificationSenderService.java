@@ -5,7 +5,7 @@ import com.notification.demo.sender.AbstractNotificationSender;
 import com.notification.demo.sender.NotificationSenderImpl;
 import com.notification.demo.sender.NotificationSender;
 
-public class NotificationService {
+public class NotificationSenderService {
 
     private NotificationSender notificationSender = new NotificationSenderImpl();
 
