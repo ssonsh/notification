@@ -1,11 +1,7 @@
 package com.notification.demo.reader;
 
-import com.notification.demo.domain.EmailNotification;
-import com.notification.demo.domain.PushNotification;
-import com.notification.demo.domain.SmsNotification;
+import com.notification.demo.domain.notification.Notification;
 
 public interface NotificationReader {
-    EmailNotificationReader getReader(EmailNotification emailNotification);
-    PushNotificationReader getReader(PushNotification pushNotification);
-    SmsNotificationReader getReader(SmsNotification smsNotification);
+    void read(Notification notification);
 }

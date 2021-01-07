@@ -1,15 +1,15 @@
 package com.notification.demo.service;
 
-import com.notification.demo.domain.Notification;
-import com.notification.demo.reader.AbstractNotificationReader;
+import com.notification.demo.domain.notification.Notification;
 import com.notification.demo.reader.NotificationReader;
-import com.notification.demo.reader.NotificationReaderImpl;
+import com.notification.demo.finder.reader.NotificationReaderFinder;
+import com.notification.demo.finder.reader.NotificationReaderFinderImpl;
 
 public class NotificationReaderService {
-    private NotificationReader notificationReader = new NotificationReaderImpl();
+    private NotificationReaderFinder notificationReaderFinder = new NotificationReaderFinderImpl();
 
     public void read(Notification notification){
-        AbstractNotificationReader reader = notification.getReader(notificationReader);
+        NotificationReader reader = notification.getReader(notificationReaderFinder);
         reader.read(notification);
     }
 }

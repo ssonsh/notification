@@ -1,10 +1,9 @@
 package com.notification.demo.sender;
 
-import com.notification.demo.domain.EmailNotification;
-import com.notification.demo.domain.Notification;
-import com.notification.demo.domain.PushNotification;
+import com.notification.demo.domain.notification.Notification;
+import com.notification.demo.domain.notification.PushNotification;
 
-public class PushNotificationSender extends AbstractNotificationSender{
+public class PushNotificationSender implements NotificationSender {
 
     @Override
     public void send(Notification notification){

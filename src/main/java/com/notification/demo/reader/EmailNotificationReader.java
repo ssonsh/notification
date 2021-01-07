@@ -1,9 +1,9 @@
 package com.notification.demo.reader;
 
-import com.notification.demo.domain.EmailNotification;
-import com.notification.demo.domain.Notification;
+import com.notification.demo.domain.notification.EmailNotification;
+import com.notification.demo.domain.notification.Notification;
 
-public class EmailNotificationReader extends AbstractNotificationReader{
+public class EmailNotificationReader implements NotificationReader {
 
     @Override
     public void read(Notification notification){
