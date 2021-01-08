@@ -1,13 +1,16 @@
-package com.notification.demo.sender;
+package com.notification.demo.service.finder.sender;
 
 import com.notification.demo.domain.notification.EmailNotification;
 import com.notification.demo.domain.notification.Notification;
 import com.notification.demo.domain.notification.receiver.EmailNotificationReceivers;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class EmailNotificationSender implements NotificationSender {
 
     @Override
-    public void send(Notification notification){
+    public List<String> send(Notification notification){
         EmailNotification emailNotification = (EmailNotification)notification;
 
         System.out.println("======== Sender : " + getClass().getName());
@@ -16,11 +19,7 @@ public class EmailNotificationSender implements NotificationSender {
         receivers.getValues().forEach(x -> System.out.println("\t>> send ]]] " + x.toString()));
         System.out.println("== receivers send end ==");
 
-        System.out.println("== notification save start ==");
-        System.out.println("\t>> kind : " + emailNotification.getKind());
-        System.out.println("\t>> title : " + emailNotification.getTitle());
-        System.out.println("\t>> registDatetime : " + emailNotification.getRegistDateTime());
-
-        System.out.println("== notification save end ==");
+        List<String> result = Arrays.asList("1", "2", "3", "4", "5");
+        return result;
     };
 }

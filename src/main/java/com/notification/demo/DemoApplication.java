@@ -1,12 +1,9 @@
 package com.notification.demo;
 
 import com.notification.demo.domain.notification.EmailNotification;
-import com.notification.demo.domain.notification.Notification;
-import com.notification.demo.domain.notification.PushNotification;
 import com.notification.demo.domain.notification.receiver.EmailNotificationReceiver;
 import com.notification.demo.domain.notification.receiver.EmailNotificationReceivers;
 import com.notification.demo.domain.notification.sender.EmailNotificationSender;
-import com.notification.demo.service.NotificationReaderService;
 import com.notification.demo.service.NotificationSenderService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,8 +25,6 @@ public class DemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        System.out.println("======= Email Send Start =======");
-
         // 1. Notification 객체 생성
         EmailNotification emailNotification = new EmailNotification("EMAIL", "테스트 발송 1", LocalDateTime.now());
 
@@ -50,12 +45,11 @@ public class DemoApplication implements CommandLineRunner {
         );
         emailNotification.appendReceivers(EmailNotificationReceivers.builder().values(receivers).build());
 
+        System.out.println("####################################");
         System.out.println(emailNotification.toString());
+        System.out.println("####################################");
 
         // 4. NotificationService send 요청
         notificationSenderService.send(emailNotification);
-
-        System.out.println("======= Email Send End =======");
-
     }
 }
